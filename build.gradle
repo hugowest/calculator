@@ -38,3 +38,5 @@ jacocoTestCoverageVerification {
 		}
 	}
 }
+
+test.finalizedBy(project.tasks.jacocoTestReport)
