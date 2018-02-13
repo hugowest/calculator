@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage("Static code analysis") {
+            steps {
+                sh "./gradlew checkstyleMain"
+            }
+     }
         stage("Compile") {
             steps {
                 sh "./gradlew compileJava"
@@ -23,26 +28,13 @@ pipeline {
                 sh "./gradlew jacocoTestCoverageVerification"
             }
         }
-
-        stage("Static code analysis") {
-            try {
-                steps {
-
-                    sh "./gradlew checkstyleMain"
-                }
-             } catch( e )
-             {
-                    currentBuild.result = 'FAILURE'
-             }
-            finally {
-                 publishHTML (target: [
-                    reportDir: 'build/reports/checkstyle/',
+    }
+    post { always {
+             publishHTML (target: [
+                   reportDir: 'build/reports/checkstyle/',
                     reportFiles: 'main.html',
                     reportName: "Checkstyle Report"
                  ])
              }
-
-            }
         }
     }
-}
