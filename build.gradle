@@ -40,3 +40,8 @@ jacocoTestCoverageVerification {
 	}
 }
 
+checkstyle {
+	toolVersion = '7.1'
+	configFile = rootProject.file('checkstyle.xml')
+}
+
