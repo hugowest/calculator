@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        pollSCM'* * * * *')ß
+        pollSCM'* * * * *')
     }
     stages {
         stage("Static code analysis") {
