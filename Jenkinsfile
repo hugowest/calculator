@@ -26,15 +26,20 @@ pipeline {
 
         stage("Static code analysis") {
             steps {
-                sh "./gradlew checkstyleMain"
-                 publishHTML (target: [
-                    reportDir: 'build/reports/checkstyle/',
-                    reportFiles: 'main.html',
-                    reportName: "Checkstyle Report"
-                 ])
-                 sh "echo checking if report exists"
-                 sh "ls -l build/reports/checkstyle"
-                 sh "ls -l build/reports/checkstyle/main.html"
+                try {
+                    sh "./gradlew checkstyleMain"
+                }  catch( e )
+                {
+                    currentBuild.result = 'FAILURE'
+                }
+                finally {
+                     publishHTML (target: [
+                        reportDir: 'build/reports/checkstyle/',
+                        reportFiles: 'main.html',
+                        reportName: "Checkstyle Report"
+                     ])
+                 }
+
             }
         }
     }
