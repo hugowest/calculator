@@ -32,6 +32,9 @@ pipeline {
                     reportFiles: 'main.html',
                     reportName: "Checkstyle Report"
                  ])
+                 sh "echo checking if report exists"
+                 sh "ls -l "build/reports/checkstyle"
+                 sh "ls -l "build/reports/checkstyle/main.html"
             }
         }
     }
