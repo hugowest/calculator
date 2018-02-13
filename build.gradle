@@ -42,6 +42,8 @@ jacocoTestCoverageVerification {
 
 checkstyle {
 	toolVersion = '7.1'
+	showViolations = true
+	ignoreFailures = true
 	configFile = rootProject.file('checkstyle.xml')
 }
 

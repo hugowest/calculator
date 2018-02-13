@@ -5,9 +5,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Calculator controller
- */
 @RestController
 public class CalculatorController {
     @Autowired
