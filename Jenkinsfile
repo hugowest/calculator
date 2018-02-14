@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'exp' }
     triggers {
-        pollSCM('5 * * * *')
+        pollSCM('* * * * *')
     }
     stages {
         stage("Static code analysis") {
@@ -41,7 +41,7 @@ pipeline {
         stage("Package") {
             steps {
                 sh "./gradlew build"
-                sh "ls -lR build"
+                sh "cp  build/libs/calculator-0.0.1-SNAPSHOT.jar /var/jdbb_out/app.jar"
             }
         }
 
