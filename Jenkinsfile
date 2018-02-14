@@ -12,9 +12,9 @@ pipeline {
                         reportFiles: 'main.html',
                         reportName: "Checkstyle Report"
                      ])
-                 }
+
             }
-     }
+        }
         stage("Compile") {
             steps {
                 sh "./gradlew compileJava"
@@ -49,8 +49,6 @@ pipeline {
                 sh "docker build -t computenow/main:calculator"
             }
         }
+    } post { always {  }
     }
-    post { always {
-
-        }
-    }
+}
