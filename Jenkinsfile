@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh "./gradlew build"
                 sh "ls -lr build/libs"
-                sh "cp  build/libs/calculator-0.0.1-SNAPSHOT.jar /var/jdbb_out/app.jar"
+                sh "cp  build/libs/Calculator-0.0.1-SNAPSHOT.jar /var/jdbb_out/app.jar"
             }
         }
 
