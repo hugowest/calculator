@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'experimental' }
+    agent { label 'exp' }
     triggers {
         pollSCM('5 * * * *')
     }
