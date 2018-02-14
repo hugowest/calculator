@@ -7,6 +7,12 @@ pipeline {
         stage("Static code analysis") {
             steps {
                 sh "./gradlew checkstyleMain"
+                 publishHTML (target: [
+                       reportDir: 'build/reports/checkstyle/',
+                        reportFiles: 'main.html',
+                        reportName: "Checkstyle Report"
+                     ])
+                 }
             }
      }
         stage("Compile") {
@@ -31,13 +37,20 @@ pipeline {
                 sh "./gradlew jacocoTestCoverageVerification"
             }
         }
+
+        stage("Package") {
+            steps {
+                sh "./gradelw build"
+            }
+        }
+
+        stage("Docker build") {
+            steps {
+                sh "docker build -t computenow/main:calculator"
+            }
+        }
     }
     post { always {
-             publishHTML (target: [
-                   reportDir: 'build/reports/checkstyle/',
-                    reportFiles: 'main.html',
-                    reportName: "Checkstyle Report"
-                 ])
-             }
+
         }
     }
