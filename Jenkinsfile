@@ -41,7 +41,7 @@ pipeline {
         stage("Package") {
             steps {
                 sh "./gradlew build"
-                sh "ls -lr"
+                sh "ls -lR build"
             }
         }
 
