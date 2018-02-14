@@ -41,6 +41,7 @@ pipeline {
         stage("Package") {
             steps {
                 sh "./gradlew build"
+                sh "ls -lr build/libs"
                 sh "cp  build/libs/calculator-0.0.1-SNAPSHOT.jar /var/jdbb_out/app.jar"
             }
         }
@@ -49,6 +50,11 @@ pipeline {
             steps {
                 sh "docker build -t computenow/main:calculator ."
             }
+        }
+    }
+    post {
+        failure {
+          sleep(60)
         }
     }
 }
