@@ -49,6 +49,5 @@ pipeline {
                 sh "docker build -t computenow/main:calculator"
             }
         }
-    } post { always {  }
     }
 }
