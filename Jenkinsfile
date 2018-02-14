@@ -46,7 +46,7 @@ pipeline {
 
         stage("Docker build") {
             steps {
-                sh "docker build -t computenow/main:calculator"
+                sh "docker build -t computenow/main:calculator ."
             }
         }
     }
