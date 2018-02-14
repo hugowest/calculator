@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'experimental' }
     triggers {
-        pollSCM('* * * * *')
+        pollSCM('5 * * * *')
     }
     stages {
         stage("Static code analysis") {
