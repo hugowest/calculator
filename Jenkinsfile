@@ -42,6 +42,8 @@ pipeline {
             steps {
                 sh "./gradlew build"
                 sh "ls -lr build/libs"
+                sh "ls -l /var"
+                sh "id"
                 sh "cp  build/libs/Calculator-0.0.1-SNAPSHOT.jar /var/jdbb_out/app.jar"
             }
         }
@@ -54,7 +56,7 @@ pipeline {
     }
     post {
         failure {
-          sleep(60)
+          sleep(300)
         }
     }
 }
